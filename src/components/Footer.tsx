@@ -4,7 +4,14 @@ import { Button } from '@/components/ui/button';
 
 export const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // For Locomotive Scroll
+    const scrollContainer = document.querySelector('[data-scroll-container]');
+    if (scrollContainer) {
+      scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Fallback for regular scroll
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
