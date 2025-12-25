@@ -4,12 +4,14 @@ import { Button } from '@/components/ui/button';
 
 export const Footer = () => {
   const scrollToTop = () => {
-    // For Locomotive Scroll
+    // Scroll to top with smooth behavior
     const scrollContainer = document.querySelector('[data-scroll-container]');
-    if (scrollContainer) {
-      scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    if (scrollContainer && (window as any).locomotiveScroll) {
+      (window as any).locomotiveScroll.scrollTo(0, { duration: 1000 });
     } else {
       // Fallback for regular scroll
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
